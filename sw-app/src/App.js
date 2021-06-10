@@ -1,17 +1,19 @@
-import React, { useEffect } from "react"
-import { List } from "./components/List.js";
+import React, { useEffect, useState } from "react"
+import { List } from "./components/List.js"
 import { fetchData } from "./utils/Api.js"
 
 function App() {
+  const [people, setPeople] = useState([])
+
   useEffect(() => {
-    fetchData()
+    fetchData().then(response => setPeople(response))
   })
 
   return (
     <div>
-      <List />
+      <List people={people} />
     </div>
   )
 }
 
-export default App;
+export default App
