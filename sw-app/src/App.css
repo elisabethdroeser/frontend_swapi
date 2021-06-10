@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.accordion input[type="checkbox"] + section {
+  display: none;
+}
+
+.accordion input[type="checkbox"]:checked + section {
+   background-color: cadetblue;
+   display: block;
+}
+
+.accordion input[type="checkbox"] {
+   display:none;
+}
+
+.section + p {
+   margin-top: 20px;
+}
