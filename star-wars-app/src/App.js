@@ -8,6 +8,11 @@ import axios from 'axios';
 
 function App() {
 
+  const myStyle = {
+    backgroundColor: "#f4f4f4",
+    margin: "5px",
+    padding: "10px 20px",
+  }
   const [people, updatePeople] = useState([])
   const apiEndpoint =' https://swapi.dev/api/people/';
     useEffect(() => {
@@ -19,9 +24,8 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <h1>Hello people</h1>
       {people.results && people.results.map(person => (
-        <div key={person.div}>
+        <div key={person.div} style={myStyle}>
           <p>{person.name}</p>
         </div>
       ))}
