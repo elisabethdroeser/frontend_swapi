@@ -1,5 +1,5 @@
 //import React, { useEffect, useState } from "react"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './components/Header'
 import axios from 'axios';
 
@@ -8,18 +8,23 @@ import axios from 'axios';
 
 function App() {
 
-  const apiEndpoint =' https://swapi.dev/api/people?page=1';
+  const [people, updatePeople] = useState([])
+  const apiEndpoint =' https://swapi.dev/api/people/';
     useEffect(() => {
-      axios
-      .get(apiEndpoint)
-      .then((data) => console.log(data))
+      axios.get(apiEndpoint)
+      .then((data) => updatePeople({...data.data }))
+      //.then((data) => console.log(data))
     }, []);
 
   return (
     <div className="container">
       <Header />
       <h1>Hello people</h1>
-
+      {people.results && people.results.map(person => (
+        <div key={person.div}>
+          <p>{person.name}</p>
+        </div>
+      ))}
 
     </div>
   )
