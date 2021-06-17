@@ -1,37 +1,24 @@
 //import React, { useEffect, useState } from "react"
-import React, { useState } from 'react'
-import Axios from 'axios'
+import React, { useEffect } from 'react'
 import Header from './components/Header'
+import axios from 'axios';
 
 //import List from "./components/List"
 //import { fetchData } from "./utils/Api"
 
 function App() {
-  const [people, setPeople] = useState("")
 
-
-  const getPeople = () => {
-    Axios
-    .get('https://swapi.dev/api/people/')
-    .then((response) => console.log(response.data.results))
-    //.then(({ data:results }) => console.log(results))
-  }
-
-
-
-  //const [people, setPeople] = useState(0);
-  /*const [person, setPerson] = useState(null);
-
-  useEffect(() => {
-    fetchData();
+  const apiEndpoint =' https://swapi.dev/api/people?page=1';
+    useEffect(() => {
+      axios
+      .get(apiEndpoint)
+      .then((data) => console.log(data))
     }, []);
-*/
-
 
   return (
     <div className="container">
       <Header />
-      <button onClick={getPeople}>Get People</button>{people}
+      <h1>Hello people</h1>
 
 
     </div>
