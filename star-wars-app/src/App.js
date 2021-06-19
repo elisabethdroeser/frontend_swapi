@@ -12,7 +12,8 @@ function App() {
   const [people, setPeople] = useState([])
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
-  const [peoplePerPage, setPeoplePerPage] = useState(5)
+  const [peoplePerPage] = useState(5)
+  //const [peoplePerPage, setPeoplePerPage] = useState(5)
 
   useEffect(() => {
     const fetchPeople = async () => {
@@ -44,12 +45,17 @@ const indexOfLastPeople= currentPage * peoplePerPage;
 const indexOfFirstPeople = indexOfLastPeople - peoplePerPage;
 const currentPeople = people.slice(indexOfFirstPeople, indexOfLastPeople);
 
+const paginate= (pageNumber) => setCurrentPage(pageNumber)
+
 
   return (
     <div className="container">
       <Header />
       <People people={currentPeople} loading={loading} />
-      <Pagination peoplePerPage={peoplePerPage} totalPeople={people.length} />
+      <Pagination
+      peoplePerPage={peoplePerPage}
+      totalPeople={people.length}
+      paginate={paginate} />
     </div>
   )
 }
