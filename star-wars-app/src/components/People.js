@@ -16,12 +16,12 @@ import React from 'react'
           {people.map(person => {
             return <li key={person.id} style={myStyle} className="list-group-item">
               {person.name}
-              <div>
+              <section>
                 {person.birth_year}
-              <div>
+              </section>
+              <section>
                 {person.gender}
-              </div>
-              </div>
+              </section>
             </li>
           })}
         </ul>

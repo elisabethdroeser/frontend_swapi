@@ -44,18 +44,18 @@ function App() {
 const indexOfLastPeople= currentPage * peoplePerPage;
 const indexOfFirstPeople = indexOfLastPeople - peoplePerPage;
 const currentPeople = people.slice(indexOfFirstPeople, indexOfLastPeople);
-
 const paginate= (pageNumber) => setCurrentPage(pageNumber)
-
 
   return (
     <div className="container">
       <Header />
-      <People people={currentPeople} loading={loading} />
+      <People
+        people={currentPeople}
+        loading={loading} />
       <Pagination
-      peoplePerPage={peoplePerPage}
-      totalPeople={people.length}
-      paginate={paginate} />
+        peoplePerPage={peoplePerPage}
+        totalPeople={people.length}
+        paginate={paginate} />
     </div>
   )
 }
