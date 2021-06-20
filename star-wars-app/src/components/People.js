@@ -11,7 +11,6 @@ import React from 'react'
     }
     return (
       <div>
-        <h2>Starwars</h2>
         <ul className="list-group mb-4">
           {people.map(person => {
             return <li key={person.id} style={myStyle} className="list-group-item">

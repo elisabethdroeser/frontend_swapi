@@ -1,15 +1,17 @@
 import PropTypes from 'prop-types'
+import { useState } from 'react'
 import Button from './Button'
 
 const Header = ({ title }) => {
   const onClick = () => {
     console.log('Click')
   }
+
   return (
     <header>
       <h1 style={{color: 'yellow', backgroundColor:'black'}}>{title}</h1>
-      <p>Skriv in det du önskar söka på:</p>
-      <input type="text" placeholder="Sök..."></input>
+      <p>Skriv in den du önskar söka på:</p>
+      <input type="text" placeholder="Sök person..." style={{padding: '5px'}}></input>
       <Button color='yellow' text='Sök' onClick={onClick} />
     </header>
   )

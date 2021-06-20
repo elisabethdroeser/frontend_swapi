@@ -1,9 +1,8 @@
-//import React, { useEffect, useState } from "react"
 import React, { useEffect, useState } from 'react'
 import Header from './components/Header'
 import People from './components/People'
 import Pagination from './components/Pagination'
-import axios from 'axios';
+import axios from 'axios'
 
 //import List from "./components/List"
 //import { fetchData } from "./utils/Api"
