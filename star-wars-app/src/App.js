@@ -18,12 +18,12 @@ function App() {
     fetchPeople();
   }, []);
 
-const [searchTerm, setSearchTerm] = useState("")
+const [searchTerm, setSearchTerm] = useState("");
 const [searchResults, setSearchResults] = useState([]);
 
-const [loading, setLoading] = useState(false)
-const [currentPage, setCurrentPage] = useState(1)
-const [peoplePerPage] = useState(5)
+const [loading, setLoading] = useState(false);
+const [currentPage, setCurrentPage] = useState(1);
+const [peoplePerPage] = useState(5);
 const indexOfLastPeople= currentPage * peoplePerPage;
 const indexOfFirstPeople = indexOfLastPeople - peoplePerPage;
 const currentPeople = people.slice(indexOfFirstPeople, indexOfLastPeople);
@@ -31,9 +31,10 @@ const paginate= (pageNumber) => setCurrentPage(pageNumber)
 
 const searchHandler = (searchTerm) => {
   setSearchTerm(searchTerm);
-  if(searchTerm !== " ") {
+  if(searchTerm !== "") {
     const newPeople = people.filter((person) => {
-      console.log(Object.values(person))
+      //console.log(Object.values(person))
+      console.log(Object.results(person));
     })
   }
 };
@@ -53,7 +54,7 @@ const searchHandler = (searchTerm) => {
         paginate={paginate}
         />
     </div>
-  )
+  );
 }
 
 export default App
