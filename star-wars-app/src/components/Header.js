@@ -1,18 +1,16 @@
 import PropTypes from 'prop-types'
-import { useState } from 'react'
-import Button from './Button'
+//import Button from './Button'
 
 const Header = ({ title }) => {
-  const onClick = () => {
-    console.log('Click')
-  }
+
+  //const onClick = () => {
+  //  console.log('Click')
+  //<!--Button color='yellow' text='Sök' onClick={onClick} /-->
+  //}
 
   return (
     <header>
-      <h1 style={{color: 'yellow', backgroundColor:'black'}}>{title}</h1>
-      <p>Skriv in den du önskar söka på:</p>
-      <input type="text" placeholder="Sök person..." style={{padding: '5px'}}></input>
-      <Button color='yellow' text='Sök' onClick={onClick} />
+      <h1 style={{color: 'yellow', backgroundColor:'black', padding: '20px'}}>{title}</h1>
     </header>
   )
 }
@@ -23,6 +21,7 @@ Header.defaultProps = {
 Header.propTypes = {
   title: PropTypes.string.isRequired,
 }
+
 export default Header
 
 
