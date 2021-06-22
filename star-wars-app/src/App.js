@@ -18,8 +18,8 @@ function App() {
     fetchPeople();
   }, []);
 
-const [searchTerm, setSearchTerm] = useState("");
-const [searchResults, setSearchResults] = useState([]);
+const [searchTerm, setSearchTerm] = useState('');
+
 
 const [loading, setLoading] = useState(false);
 const [currentPage, setCurrentPage] = useState(1);
@@ -29,15 +29,15 @@ const indexOfFirstPeople = indexOfLastPeople - peoplePerPage;
 const currentPeople = people.slice(indexOfFirstPeople, indexOfLastPeople);
 const paginate= (pageNumber) => setCurrentPage(pageNumber)
 
-const searchHandler = (searchTerm) => {
-  setSearchTerm(searchTerm);
-  if(searchTerm !== "") {
-    const newPeople = people.filter((person) => {
-      //console.log(Object.values(person))
-      console.log(Object.results(person));
-    })
-  }
-};
+//const searchHandler = (searchTerm) => {
+//  setSearchTerm(searchTerm);
+//  if(searchTerm !== "") {
+//    const newPeople = people.filter((person) => {
+//      //console.log(Object.values(person))
+//      //console.log(Object.results(person));
+//    })
+//  }
+//};
 
   return (
     <div className="container">
@@ -46,7 +46,7 @@ const searchHandler = (searchTerm) => {
         people={currentPeople}
         loading={loading}
         term={searchTerm}
-        searchKeyword={searchHandler}
+        //searchKeyword={searchHandler}
         />
       <Pagination
         peoplePerPage={peoplePerPage}

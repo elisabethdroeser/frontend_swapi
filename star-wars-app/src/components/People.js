@@ -13,7 +13,7 @@ const People = ({ people, loading }) => {
   };
 
 const getSearchTerm = () => {
-    people.searchKeyword(inputEl.current.value);
+    console.log(inputEl.current.value);
   };
 
   return (
@@ -21,28 +21,32 @@ const getSearchTerm = () => {
       <div className="ui search">
         <div className="ui icon input">
           <input
-          ref={inputEl}
-          type="text"
-          placeholder="Sök..."
-          className="prompt"
-          style={{padding: '5px', margin: '5px'}}
-          value={people.term}
-          onChange={getSearchTerm}
+            ref={inputEl}
+            type="text"
+            placeholder="Sök..."
+            className="prompt"
+            style={{padding: '5px', margin: '5px'}}
+            value={people.term}
+            onChange={getSearchTerm}
           />
           <i className="search icon"></i>
         </div>
       </div>
       <ul className="list-group mb-4">
         {people.map(person => {
-          return <li key={person.id} style={myStyle} className="list-group-item">
-            {person.name}
-            <section>
-              {person.birth_year}
-            </section>
-            <section>
-              {person.gender}
-            </section>
-          </li>
+          return (
+          <>
+            <li key={person.id} style={myStyle} className="list-group-item">
+              {person.name}
+              <section>
+                {person.birth_year}
+              </section>
+              <section>
+                {person.gender}
+              </section>
+            </li>
+          </>
+          )
         })}
       </ul>
     </div>
