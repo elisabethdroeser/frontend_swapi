@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
 const myStyle = {
   backgroundColor: "#f4f4f4",
@@ -7,27 +7,29 @@ const myStyle = {
 }
 
 const People = ({ people, loading }) => {
+  const [query, setQuery] = useState("");
   const inputEl = useRef("");
   if(loading) {
     return <h2>Lista med personer</h2>
   };
 
-const getSearchTerm = () => {
-    console.log(inputEl.current.value);
-  };
-
+  //const [query, setQuery] = useState("");
+//  };
+function search (people) {
+  return people.filter((person) => person.name.toLowerCase().indexOf(query) > -1)
+}
   return (
     <div>
       <div className="ui search">
         <div className="ui icon input">
           <input
-            ref={inputEl}
+            //ref={inputEl}
             type="text"
             placeholder="Sök..."
             className="prompt"
             style={{padding: '5px', margin: '5px'}}
-            value={people.term}
-            onChange={getSearchTerm}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
           <i className="search icon"></i>
         </div>
@@ -36,15 +38,22 @@ const getSearchTerm = () => {
         {people.map(person => {
           return (
           <>
-            <li key={person.id} style={myStyle} className="list-group-item">
-              {person.name}
+          <div>
+          <section class="accordion">
+            <section key={person.id} style={myStyle} className="list-group-item">
+              <label for="cb_1"> {person.name}</label>
+              <input id="cb_1" type="checkbox"></input>
               <section>
-                {person.birth_year}
+                <div>
+                  {person.birth_year}
+                </div>
+                <div>
+                  {person.gender}
+                </div>
               </section>
-              <section>
-                {person.gender}
-              </section>
-            </li>
+            </section>
+           </section>
+           </div>
           </>
           )
         })}
