@@ -1,58 +1,51 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './components/Header'
-import People from './components/People'
-import Pagination from './components/Pagination'
 import axios from 'axios'
+import Datatable from './components/datatable'
+
+require("es6-promise").polyfill()
+require("isomorphic-fetch")
 
 function App() {
-  const [people, setPeople] = useState([])
+  const [data, setData] = useState([])
+  const [query, setQuery] = useState("")
 
   useEffect(() => {
-    const fetchPeople = async () => {
-      setLoading(true);
-      const res = await axios.get('https://swapi.dev/api/people/');
+    const fetchData = async () => {
+      const response = await axios.get('https://swapi.dev/api/people/');
       //https://swapi.dev/api/people?page=1
-        setPeople(res.data.results);
-        setLoading(false);
+        setData(response.data.results);
+        //setData(response.data.results);
+        //setLoading(false);
     }
-    fetchPeople();
+    fetchData();
   }, []);
-
-//const [searchTerm, setSearchTerm] = useState("");
-//const [searchResults, setSearchResults] = useState([]);
-//
-const [loading, setLoading] = useState(false);
-const [currentPage, setCurrentPage] = useState(1);
-const [peoplePerPage] = useState(5);
-const indexOfLastPeople= currentPage * peoplePerPage;
-const indexOfFirstPeople = indexOfLastPeople - peoplePerPage;
-const currentPeople = people.slice(indexOfFirstPeople, indexOfLastPeople);
-const paginate= (pageNumber) => setCurrentPage(pageNumber)
-
-//const searchHandler = (searchTerm) => {
-//  setSearchTerm(searchTerm);
-//  if(searchTerm !== "") {
-//    const newPeople = people.filter((person) => {
-//      //console.log(Object.values(person))
-//      console.log(Object.results(person));
-//    })
-//  }
-//};
+  //  fetch("https://swapi.dev/api/people/?page")
+  //  //fetch("https://swapi.dev/api/people/?page={id}&format=json")
+  //  .then(response => response.json())
+  //  .then(json => setData(json))
+  //  .then(results => setPeople())
+  //}, [])
+  ////second argument, dependencies,
+function search(rows) {
+  return rows.filter(row => row.name.toLowerCase().indexOf(query) > -1);
+}
 
   return (
     <div className="container">
       <Header />
-      <People
-        people={currentPeople}
-        loading={loading}
-        //term={searchTerm}
-        //searchKeyword={searchHandler}
+      <br></br>
+      <div>
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}>
+        </input>
+      </div>
+      <div>
+        <Datatable data={search(data)}
         />
-      <Pagination
-        peoplePerPage={peoplePerPage}
-        totalPeople={people.length}
-        paginate={paginate}
-        />
+      </div>
     </div>
   );
 }
