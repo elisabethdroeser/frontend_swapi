@@ -13,34 +13,28 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('https://swapi.dev/api/people/');
-      //https://swapi.dev/api/people?page=1
         setData(response.data.results);
-        //setData(response.data.results);
-        //setLoading(false);
     }
     fetchData();
   }, []);
-  //  fetch("https://swapi.dev/api/people/?page")
-  //  //fetch("https://swapi.dev/api/people/?page={id}&format=json")
-  //  .then(response => response.json())
-  //  .then(json => setData(json))
-  //  .then(results => setPeople())
-  //}, [])
-  ////second argument, dependencies,
+
 function search(rows) {
   return rows.filter(row => row.name.toLowerCase().indexOf(query) > -1);
-}
-
+  }
   return (
     <div className="container">
       <Header />
       <br></br>
-      <div>
+      <div className="ui icon input">
         <input
           type="text"
           value={query}
+          style={{padding: '5px', margin: '5px'}}
+          placeholder="Sök..."
+          className="prompt"
           onChange={(e) => setQuery(e.target.value)}>
         </input>
+        <i className="search icon"></i>
       </div>
       <div>
         <Datatable data={search(data)}
