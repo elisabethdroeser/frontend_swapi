@@ -7,20 +7,24 @@ require("es6-promise").polyfill()
 require("isomorphic-fetch")
 
 function App() {
-  const [data, setData] = useState([])
+  const [ data, setData ] = useState([])
   const [query, setQuery] = useState("")
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('https://swapi.dev/api/people/');
+    const fetchData =
+      async () => {
+      const response =
+        await axios.get('https://swapi.dev/api/people/?=page${pagenumber)');
         setData(response.data.results);
     }
     fetchData();
   }, []);
 
+
 function search(rows) {
   return rows.filter(row => row.name.toLowerCase().indexOf(query) > -1);
   }
+
   return (
     <div className="container">
       <Header />
@@ -40,6 +44,7 @@ function search(rows) {
         <Datatable data={search(data)}
         />
       </div>
+
     </div>
   );
 }

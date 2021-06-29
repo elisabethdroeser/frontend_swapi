@@ -1,11 +1,13 @@
 import React from 'react'
 
-export default function Datatable({ data }) {
+function Datatable({ data }) {
   const columns = data[0] && Object.keys(data[0])
   return (
+    <div>
       <table>
       <thead>
-        <tr>{data[0] && columns.map(heading => <th>{heading}</th>)}</tr>
+        <br></br>
+        <tr>Namn</tr>
         <br></br>
       </thead>
       <tbody>
@@ -17,6 +19,8 @@ export default function Datatable({ data }) {
         </tr>)}
       </tbody>
     </table>
+    </div>
   )
 }
 
+export default Datatable
