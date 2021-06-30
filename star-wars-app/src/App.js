@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Header from './components/Header'
 import axios from 'axios'
 import Datatable from './components/datatable'
-import Pagination from './components/Pagination'
 
 require("es6-promise").polyfill()
 require("isomorphic-fetch")
@@ -22,9 +21,7 @@ function App() {
   }, []);
 
    //"next": "https://swapi.dev/api/people/?page=2",
-    //next: "https://swapi.dev/api/people/?=page%24%7Bpagenumber%29&page=2"
     //previous: null
-    //"previous": null
 
 function search(rows) {
   return rows.filter(row => row.name.toLowerCase().indexOf(query) > -1);
@@ -49,7 +46,6 @@ function search(rows) {
         <Datatable data={search(data)}
         />
       </div>
-    <Pagination />
     </div>
   );
 }

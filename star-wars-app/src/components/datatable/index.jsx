@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState} from 'react'
+
 const myStyle = {
   backgroundColor: "#f4f4f4",
   margin: "5px",
@@ -6,6 +7,8 @@ const myStyle = {
 }
 
 function Datatable({ data }) {
+  const [show, setShow] = useState(true)
+
   return (
     <div>
       <h2>Starwars Personer</h2>
@@ -14,16 +17,19 @@ function Datatable({ data }) {
           return (
           <>
             <div>
-              <section class="accordion">
+              <section className="accordion">
                <section key={row.id} style={myStyle} className="list-group-item">
+                   {/*<button onClick={() =>setShow(true)}>Show</button>
+                  <button onClick={() =>setShow(false)}>Hide</button>*/}
+                  <button style={{border: '0px'}}onClick={() =>setShow(!show)}>Toggle</button>
+                  <br />
                 <label for="cb-1">{row.name}</label>
-                <input id="cb_1" type="checkbox"></input>
                 <div>
-                  {row.birth_year}
+                  {
+                    show?<p>{row.birth_year}<br />{row.gender}</p>:null
+                  }
                 </div>
-                <div>
-                  {row.gender}
-                </div>
+
                 </section>
               </section>
             </div>
