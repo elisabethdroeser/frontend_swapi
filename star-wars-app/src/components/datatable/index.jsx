@@ -6,9 +6,11 @@ const myStyle = {
   padding: "10px 20px",
 }
 
-function Datatable({ data }) {
+function Datatable({ data, loading }) {
   const [show, setShow] = useState(true)
-
+  if(loading) {
+    return <h2>Laddar...</h2>
+  }
   return (
     <div>
       <h2>Starwars Personer</h2>
