@@ -1,24 +1,19 @@
 import React from 'react'
+const myStyle = {
+  backgroundColor: "#f4f4f4",
+  margin: "5px",
+  padding: "10px 20px",
+}
 
 function Datatable({ data }) {
-  const columns = data[0] && Object.keys(data[0])
   return (
     <div>
-      <table>
-      <thead>
-        <br></br>
-        <tr>Namn</tr>
-        <br></br>
-      </thead>
-      <tbody>
-        {data.map(row => <tr>
-          {
-            columns.map(column =>
-            <td>{row[column]}</td>)
-          }
-        </tr>)}
-      </tbody>
-    </table>
+      <h2>Starwars Personer</h2>
+      <ul className="list-group mb-4">
+        {data.map(row => {
+          return <li key={row.id}>{row.name}</li>
+            })}
+        </ul>
     </div>
   )
 }
